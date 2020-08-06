@@ -43,6 +43,7 @@ public class VariantToBqUtils {
     public static final String CALLS_NAME = "name";
     public static final String CALLS_GENOTYPE = "genotype";
     public static final String CALLS_PHASESET = "phaseset";
+    public static final String CALLS_SAMPLE_ID = "sample_id";
   }
 
   public static String buildReferenceBase(VariantContext variantContext) {
