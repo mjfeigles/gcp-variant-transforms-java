@@ -1,12 +1,13 @@
 // Copyright 2020 Google LLC
- 
+
 package com.google.gcp_variant_transforms.options;
- 
+
 import static com.google.common.truth.Truth.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
- 
+
+import com.google.cloud.bigquery.Schema;
 import com.google.common.collect.ImmutableList;
 import htsjdk.variant.vcf.VCFHeader;
 import java.io.IOException;
@@ -128,4 +129,20 @@ public class VcfToBqContextTest {
   
      assertThat(vcfToBqContext.getVCFHeader()).isEqualTo(vcfHeader);
    }
+
+   @Test
+   public void testVcfContext_whenGetBqSchema_thenNull() throws IOException {
+     VcfToBqContext vcfToBqContext = new VcfToBqContext(MOCKED_VCF_TO_BQ_OPTIONS);   
+  
+     assertThat(vcfToBqContext.getBqSchema()).isNull();
+   }
+ 
+   @Test
+   public void testVcfContext_whenSetBqSchema_thenIsEqualTo() throws IOException {
+      VcfToBqContext vcfToBqContext = new VcfToBqContext(MOCKED_VCF_TO_BQ_OPTIONS);   
+      Schema schema = mock(Schema.class);
+      vcfToBqContext.setBqSchema(schema);
+   
+      assertThat(vcfToBqContext.getBqSchema()).isEqualTo(schema);
+    }
 }
