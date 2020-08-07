@@ -13,3 +13,5 @@ gcp-variant-transforms-java.iml
 
 #Ignore VSCode files
 .vscode/
+.classpath
+
